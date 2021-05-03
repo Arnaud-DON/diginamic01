@@ -1,20 +1,26 @@
 package fr.declaration.variable;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class DeclarationApp {
     public static void main(String[] args) {
-        byte b = 0;
-        short sh = 3;
-        int i = 5;
-        long l = 100023;
-        float f = 123.34f;
-        double d = 4.45;
-        char c = 'a';
-        boolean bool = true;
-        String sz = "text";
+        int age;
+        double money;
 
-        System.out.println(sz+" / "+c+" / "+b+" / "+l+" / "+i+" / "+f+" / "+sh+" / "+d+" / "+bool);
+        age = ThreadLocalRandom.current().nextInt(0, 100);
+        money = ThreadLocalRandom.current().nextDouble(0,100000);
+        String res = "";
 
-        String randomString = "Voici le résultat d’un calcul : \r\n 1+5=6";
-        System.out.println(randomString);
+        if (age > 18 && money == 1000) {
+            res = "L'utilisateur a plus de 18 ans et 1000 euros.\n";
+        }
+        if (age > 21 || money > 1000) {
+            res += "L'utilisateur a plus de 21 ans ou plus de 1000 euros.\n";
+        }
+        if (age > 15 && money != 1000) {
+            res += "L'utilisateur a plus de 15 ans mais pas exactement 1000 euros.\n";
+        }
+        System.out.println(res);
+        System.out.println(age + "/" + money);
     }
 }
