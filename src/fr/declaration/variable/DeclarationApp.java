@@ -1,26 +1,45 @@
 package fr.declaration.variable;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Scanner;
 
 public class DeclarationApp {
     public static void main(String[] args) {
-        int age;
-        double money;
 
-        age = ThreadLocalRandom.current().nextInt(0, 100);
-        money = ThreadLocalRandom.current().nextDouble(0,100000);
-        String res = "";
+        int nb = 0;
+        String line = "";
+        String sq = "";
+        String tri = "";
 
-        if (age > 18 && money == 1000) {
-            res = "L'utilisateur a plus de 18 ans et 1000 euros.\n";
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Entrez un nombre :");
+        nb = scan.nextInt();
+
+        for (int i = 0; i < nb; i++) {
+            System.out.print('*');
+            //line += "*";
+            //tri += line + "\n";
         }
-        if (age > 21 || money > 1000) {
-            res += "L'utilisateur a plus de 21 ans ou plus de 1000 euros.\n";
+        System.out.println();
+        System.out.println();
+
+        for (int i = 0; i < nb; i++) {
+            for (int j = 0; j < nb; j++) {
+                System.out.print('*');
+            }
+            System.out.println();
         }
-        if (age > 15 && money != 1000) {
-            res += "L'utilisateur a plus de 15 ans mais pas exactement 1000 euros.\n";
+
+        System.out.println();
+        System.out.println();
+
+        String msg = "";
+        for (int i = 0; i < nb; i++) {
+            msg += "*";
+            System.out.println(msg);
+            //sq += line + "\n";
         }
-        System.out.println(res);
-        System.out.println(age + "/" + money);
+        //System.out.println(line + "\n\n" + sq + "\n\n" + tri);
+
     }
 }
