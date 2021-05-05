@@ -8,4 +8,9 @@ public class Compte {
         this.accountNb = accountNb;
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        return "Account number : " + accountNb + "\nBalance : " +  balance;
+    }
 }
