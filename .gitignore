@@ -1,7 +1,4 @@
-/.idea/.gitignore
-/.idea/.name
-/.idea/modules.xml
-/.idea/dictionaries/super.xml
-/TP 02.iml
-/.idea/vcs.xml
+*.iml
 *.class
+/.idea
+/J*
