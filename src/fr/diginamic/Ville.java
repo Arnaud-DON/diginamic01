@@ -3,51 +3,67 @@ package fr.diginamic;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Ville {
-    public static void main(String[] args) {
+public class Ville implements Comparable<Ville> {
+    public String nom;
+    public int pop;
 
-        ArrayList<String> cities = new ArrayList<>(Arrays.asList(
-                "Nice, 343 000 hab.",
-                "Carcassonne, 47 800 hab.",
-                "Narbonne, 53 400 hab.",
-                "Lyon, 484 000 hab.",
-                "Foix, 9 700 hab.",
-                "Pau, 77 200 hab.",
-                "Marseille, 850 700 hab.",
-                "Tarbes, 40 600 hab."
-        ));
+    public Ville(String nom, int pop) {
+        this.nom = nom;
+        this.pop = pop;
+    }
+
+
+    public static ArrayList<Ville> villes = new ArrayList<>(Arrays.asList(
+            new Ville("Nice", 343000),
+            new Ville("Carcassonne", 47800),
+            new Ville("Narbonne", 53400),
+            new Ville("Lyon", 484000),
+            new Ville("Foix", 9700),
+            new Ville("Pau", 77200),
+            new Ville("Marseille", 850700),
+            new Ville("Tarbes", 40600)
+    ));
+
+    public static void main(String[] args) {
 
 
         int maxPop = 0;
-        String cityMaxPop = "";
+        Ville cityMaxPop = null;
         int minPop = 100000000;
-        int idxMinPop = -1;
-        for (int i = 0; i < cities.size(); i++) {
-            String city = cities.get(i);
-            String cityName = city.split(",")[0];
-            String cityPop = city.split(",")[1];
-            int pop = Integer.parseInt(
-                    cityPop.substring(0, cityPop.indexOf("hab.")).replace(" ", ""));
+        Ville cityMinPop = null;
+        for (Ville ville : villes) {
+            int pop = ville.pop;
             if(pop > maxPop){
                 maxPop = pop;
-                cityMaxPop = cityName;
+                cityMaxPop = ville;
             }
             if(pop < minPop){
                 minPop = pop;
-                idxMinPop = i;
+                cityMinPop = ville;
             }
             if(pop > 100000){
-                cityName = cityName.toUpperCase();
-                cities.set(i, cityName + "," + cityPop);
+                ville.nom = ville.nom.toUpperCase();
             }
         }
         System.out.println("La ville la plus peuplée est : " + cityMaxPop);
         System.out.println();
         System.out.println();
-        cities.remove(idxMinPop);
+        villes.remove(cityMinPop);
 
-        for (String city : cities) {
-            System.out.println(city);
+        for (Ville ville : villes) {
+            System.out.println(ville.nom);
         }
+    }
+
+    /* Excercice 1
+    @Override
+    public int compareTo(Ville ville) {
+        return this.nom.compareTo(ville.nom);
+    }
+
+    */// Excercice 2
+    @Override
+    public int compareTo(Ville ville) {
+        return ville.pop - this.pop;
     }
 }
