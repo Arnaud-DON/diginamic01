@@ -87,24 +87,29 @@ public class Interfactif21Batons {
     }
 
     /**
-     * D'aprÃ¨s wikipÃ©dia la stratÃ©gie optimale est de laisser un nombre d'objets congru Ã  1 modulo 4 (câ€™est-Ã -dire : 1, 5, 9, 13...).
+     * D'après wikipédia la stratégie optimale est de laisser un nombre d'objets congru à 1 modulo 4 (c'est-à-dire : 1, 5, 9, 13...).
      *
      * @param totalBatons
-     * @return nb de bÃ¢tons Ã  retirer
+     * @return nb de bâtons à retirer
      */
     private static int joueEnDifficile(int totalBatons) {
         int result;
 
         if(totalBatons <= 4){
-            result = totalBatons - 1; // S'il reste 4 bÃ¢tons ou moins on retire de maniÃ¨re Ã  n'en laisser qu'un
+        	// S'il reste 4 bâtons ou moins on retire de manière à n'en laisser qu'un
+            result = totalBatons - 1;
         }
-        else { // S'il reste plus de 4 bÃ¢tons on retire de maniÃ¨re Ã  laisser un nombre tel que le resultat de son modulo par 4 soit de 1
-            result = switch (totalBatons % 4)
+        else {
+        	// S'il reste plus de 4 bâtons on retire de manière à laisser un nombre tel que le resultat de son modulo par 4 soit de 1
+            switch (totalBatons % 4)
             {
-                case 0 -> 3;    // On retire 3 s'il reste un multiple de 4
-                case 3 -> 2;    // On retire 2 si le rÃ©sultat du modulo est de 3
-                default -> 1;   // On retire 1 si le rÃ©sultat du modulo est de 2
-                                // Si le rÃ©sultat du modulo est de 1, le joueur Ã  l'avantage on retire le moins de bÃ¢tons possible.
+            	// On retire 3 s'il reste un multiple de 4
+                case 0: result =  3;   
+                // On retire 2 si le résultat du modulo est de 3
+                case 3: result =  2;   
+                // On retire 1 si le résultat du modulo est de 2
+                default: result =  1;  
+                // Si le résultat du modulo est de 1, le joueur à l'avantage on retire le moins de bâtons possible.
             };
 
         }
